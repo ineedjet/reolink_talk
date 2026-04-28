@@ -271,7 +271,7 @@ async def ffmpeg_to_adpcm_wav(
         # Volume is applied in software. This provides a consistent UX even if a
         # camera model does not support hardware "speak volume" control.
         "-af",
-        f"volume={max(0.0, float(volume))}",
+        f"volume={max(0.0, float(volume))},aresample=resampler=soxr,highpass=f=200,lowpass=f=7000",
         "-ac",
         "1",
         "-ar",
